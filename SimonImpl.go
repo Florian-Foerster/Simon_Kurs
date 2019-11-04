@@ -28,7 +28,7 @@ func Initialisieren () Spielfeld {
 	fmt.Println("Mach das Fenster erst mal auf!!!")
 	}
 	var b = make ([]uint8, 100)  //für das Festlegen der Farbenfolge
-	var s Spielfeld
+	
 	s.grüne = Lampe.Initialisieren(10,10,100,0,255,0) 
 	s.rot = Lampe.Initialisieren(120,10,100,255,0,0)
 	s.gelb= Lampe.Initialisieren(10,120,100,0,255,255)
