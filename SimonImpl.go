@@ -23,6 +23,24 @@ func Initialisieren () Spielfeld {
 //      Die vier Lampen sind initialisiert und aus.
 //      Der Modus ist "vorspielen"
 //      Das so initialisierte Spielfeld ist zurückgegeben.
+
+	if gfx.FensterOffen != true {
+	fmt.Println("Mach das Fenster erst mal auf!!!")
+	}
+	var b = make ([]uint8, 100)  //für das Festlegen der Farbenfolge
+	var s Spielfeld
+	s.grüne = Lampe.Initialisieren(10,10,100,0,255,0) 
+	s.rot = Lampe.Initialisieren(120,10,100,255,0,0)
+	s.gelb= Lampe.Initialisieren(10,120,100,0,255,255)
+	s.blau= Lampe.Initialisieren(120,120,100,0,0,255)
+	s.bisherGeschafft = 0
+	s.Zeigedauer = 500000000 //in ms
+	s.Modus = "Vorspielen"
+	zufallszahlen.Randomisieren()
+	for i:=0; i<len(b); i++{
+		b[i] = uint8(zufallszahlen.NZufallszahl(0,3))
+	}
+	return s
 }
 
 func (s *Spielfeld)Zeichnen(){
