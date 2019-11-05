@@ -147,5 +147,12 @@ func (s *Spielfeld) Nachspielen () bool {
 /// Bla
 func main(){
 	gfx.Fenster(230, 230)
-    gfx.TastaturLesen1()
+    	var Simon Spielfeld
+    	Simon=Initialisieren()
+    	var beendet bool;
+    	beendet=false
+    	for beendet == false {
+       Simon.Vorspielen()
+       beendet= ! Simon.Nachspielen()
+    }
 }
