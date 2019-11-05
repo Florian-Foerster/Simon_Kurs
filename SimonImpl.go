@@ -15,7 +15,7 @@ type Spielfeld struct {
 	grüne, rote, blaue, gelbe Lampe.Lampe //die vier Lapmen
 }
 
-func Initialisieren () Spielfeld {
+func Initialisieren () *Spielfeld {
 	
 //Vor.: Ein Grafikfenster ist geöffnet.
 //Eff.: Die Farbenfolge ist mit 100 zufälligen erten zwischen 0 und 3 gefüllt.
@@ -25,20 +25,20 @@ func Initialisieren () Spielfeld {
 //      Das so initialisierte Spielfeld ist zurückgegeben.
 }
 
-func (s *Spielfeld)Zeichnen(){
+func (s *Spielfeld) Zeichnen(){
 //Vor.: Ein Grafikfenster ist geöffnet.
 //Eff.: Das aktuelle Spielfeld ist auf dem Bildschirm ausgegeben.
 
 }
 
-func (s *Spielfeld)Vorspielen(){
+func (s *Spielfeld) Vorspielen(){
 //Vor.: Ein Grafikfenster ist geöffnet.
 //Eff.: Es haben nacheinander die vom Spieler bisher richtig geklickten Lampen
 //      plus eine zusätzliche aufgeleuchtet. Der Modus ist auf "vorspielen" gesetzt.
 
 }
 
-func (s*Spielfeld)Nachspielen()bool{
+func (s*Spielfeld) Nachspielen() bool{
 //Vor.: Ein Grafikfenster ist geöffnet.
 //Eff.: Wenn der Spieler die Lampen in der richtigen Reihenfolge angeklickt hat,
 //      so ist true zurück gegeben. 
