@@ -5,6 +5,7 @@ import "./Lampe"
 import "zufallszahlen"
 import "time"
 import "strconv"
+import "fmt"
 
 type Spielfeld struct {
 	Farbenfolge []uint8    //Slice von uin8-Werten, das die Anzeige-Reihenfolge der Lampen enthält
