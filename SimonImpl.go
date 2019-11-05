@@ -38,7 +38,41 @@ func (s *Spielfeld)Vorspielen(){
 //Vor.: Ein Grafikfenster ist geöffnet.
 //Eff.: Es haben nacheinander die vom Spieler bisher richtig geklickten Lampen
 //      plus eine zusätzliche aufgeleuchtet. Der Modus ist auf "vorspielen" gesetzt.
-
+	s.Modus = "vorspielen"
+	s.Zeichnen()
+	//s.bisherGeschafft++	besser am Ende von Nachspielen (sonst am Anfang von Nachspielen falsche Anzeige)
+	for i:=uint8(0); i<=(*s).bisherGeschafft;i++ {
+		switch (*s).Farbenfolge[i] {
+		case 0:
+		s.grüne.Umschalten()
+		s.grüne.Zeichnen()
+		time.Sleep(time.Duration(s.Zeigedauer))
+		s.grüne.Umschalten()
+		s.grüne.Zeichnen()
+		time.Sleep(time.Duration(s.Zeigedauer/2))
+		case 1:
+		s.rote.Umschalten()
+		s.rote.Zeichnen()
+		time.Sleep(time.Duration(s.Zeigedauer))
+		s.rote.Umschalten()
+		s.rote.Zeichnen()
+		time.Sleep(time.Duration(s.Zeigedauer/2))
+		case 2:
+		s.blaue.Umschalten()
+		s.blaue.Zeichnen()
+		time.Sleep(time.Duration(s.Zeigedauer))
+		s.blaue.Umschalten()
+		s.blaue.Zeichnen()
+		time.Sleep(time.Duration(s.Zeigedauer/2))
+		case 3:
+		s.gelbe.Umschalten()
+		s.gelbe.Zeichnen()
+		time.Sleep(time.Duration(s.Zeigedauer))
+		s.gelbe.Umschalten()
+		s.gelbe.Zeichnen()
+		time.Sleep(time.Duration(s.Zeigedauer/2))
+		}
+	}
 }
 
 func (s *Spielfeld) Nachspielen () bool {
