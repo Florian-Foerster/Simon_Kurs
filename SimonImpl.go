@@ -38,13 +38,62 @@ func (s *Spielfeld)Vorspielen(){
 
 }
 
-func (s*Spielfeld)Nachspielen()bool{
+func (s *Spielfeld) Nachspielen () bool {
 //Vor.: Ein Grafikfenster ist geöffnet.
 //Eff.: Wenn der Spieler die Lampen in der richtigen Reihenfolge angeklickt hat,
 //      so ist true zurück gegeben. 
 //      Wenn nicht, so ist false zurückgegeben.
 //      Der Modus ist auf "nachspielen" gesetzt.
-   return true
+	var t uint8
+	var st int8
+	var x,y uint16
+	(*s).Modus="Nachspielen"
+	s.Zeichnen()
+	for i:=0;i<=int((*s).bisherGeschafft);i++ {
+		s.Zeichnen()
+		for {
+			t,st,x,y= gfx.MausLesen1()	
+			if t==1 && st==1 {break}
+		}
+		s.Zeichnen()
+		if (*s).rote.IstGeklickt(1,1,x,y) {
+				(*s).rote.Umschalten()
+				s.Zeichnen()
+				time.Sleep(time.Duration((*s).Zeigedauer))
+				(*s).rote.Umschalten()
+				s.Zeichnen()				
+			if (*s).Farbenfolge[i]!=1 {return false}
+		} else if (*s).grüne.IstGeklickt(1,1,x,y) {
+				(*s).grüne.Umschalten()
+				s.Zeichnen()
+				time.Sleep(time.Duration((*s).Zeigedauer))
+				(*s).grüne.Umschalten()
+				s.Zeichnen()	
+				
+			if (*s).Farbenfolge[i]!=0 {return false}
+		} else if (*s).blaue.IstGeklickt(1,1,x,y) {
+				(*s).blaue.Umschalten()
+				s.Zeichnen()
+				time.Sleep(time.Duration((*s).Zeigedauer))
+				(*s).blaue.Umschalten()
+				s.Zeichnen()	
+				
+			if (*s).Farbenfolge[i]!=2 {return false}
+		} else if (*s).gelbe.IstGeklickt(1,1,x,y) {
+				(*s).gelbe.Umschalten()
+				s.Zeichnen()
+				time.Sleep(time.Duration((*s).Zeigedauer))
+				(*s).gelbe.Umschalten()
+				s.Zeichnen()	
+			if (*s).Farbenfolge[i]!=3 {return false}
+		} else {
+			i--
+		}
+	}
+	time.Sleep(time.Duration((*s).Zeigedauer))
+	(*s).bisherGeschafft++
+	//(*s).Zeigedauer-1000
+	return true
 }
 
 func main(){
