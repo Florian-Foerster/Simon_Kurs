@@ -1,8 +1,5 @@
 package main
 
-//Some stupid comment
-//Irgendwas Sinnloses von Schüler x 
-
 import "gfx"
 import "./Lampe"
 import "zufallszahlen"
