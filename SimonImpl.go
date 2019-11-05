@@ -25,11 +25,22 @@ func Initialisieren () Spielfeld {
 //      Das so initialisierte Spielfeld ist zurückgegeben.
 }
 
-func (s *Spielfeld)Zeichnen(){
+func (s *Spielfeld)Zeichnen(){  //Üntzelmann, Förster
 //Vor.: Ein Grafikfenster ist geöffnet.
 //Eff.: Das aktuelle Spielfeld ist auf dem Bildschirm ausgegeben.
-
-}
+    gfx.Stiftfarbe(255,255,255)
+    gfx.Vollrechteck(0,0,230,10)
+	gfx.Stiftfarbe(0,0,0)
+	gfx.Schreibe(0,0,s.Modus)
+	s.grüne.Zeichnen()
+	s.rote.Zeichnen()
+	s.gelbe.Zeichnen()
+	s.blaue.Zeichnen()
+	gfx.Stiftfarbe(255,255,255)
+	gfx.Vollrechteck(0,220,220,20)
+	gfx.Stiftfarbe(0,0,0)
+	gfx.Schreibe(0,220,"bisher geschafft:" + strconv.Itoa(int(s.bisherGeschafft)))
+} 
 
 func (s *Spielfeld)Vorspielen(){
 //Vor.: Ein Grafikfenster ist geöffnet.
