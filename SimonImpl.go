@@ -144,6 +144,7 @@ func (s *Spielfeld) Nachspielen () bool {
 	return true
 }
 
+/// Bla
 func main(){
 	gfx.Fenster(230, 230)
     gfx.TastaturLesen1()
