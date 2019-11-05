@@ -5,9 +5,9 @@ package main
 
 import "gfx"
 import "./Lampe"
-//import "zufallszahlen"
-//import "time"
-//import "strconv"
+import "zufallszahlen"
+import "time"
+import "strconv"
 
 type Spielfeld struct {
 	Farbenfolge []uint8    //Slice von uin8-Werten, das die Anzeige-Reihenfolge der Lampen enthält
@@ -18,14 +18,30 @@ type Spielfeld struct {
 	grüne, rote, blaue, gelbe Lampe.Lampe //die vier Lapmen
 }
 
-func Initialisieren () Spielfeld {
-	
+func Initialisieren () Spielfeld{  //Wendt, Opitz
 //Vor.: Ein Grafikfenster ist geöffnet.
 //Eff.: Die Farbenfolge ist mit 100 zufälligen erten zwischen 0 und 3 gefüllt.
 //      bisherGeschafft ist auf 0 gesetzt.
 //      Die vier Lampen sind initialisiert und aus.
 //      Der Modus ist "vorspielen"
 //      Das so initialisierte Spielfeld ist zurückgegeben.
+	if gfx.FensterOffen() != true {
+	fmt.Println("Mach das Fenster erst mal auf!!!")
+	}
+	var s Spielfeld
+	s.Farbenfolge = make ([]uint8, 100)  //für das Festlegen der Farbenfolge
+	s.grüne = Lampe.Initialisieren(10,10,100,0,255,0) 
+	s.rote = Lampe.Initialisieren(120,10,100,255,0,0)
+	s.gelbe= Lampe.Initialisieren(10,120,100,0,255,255)
+	s.blaue= Lampe.Initialisieren(120,120,100,0,0,255)
+	s.bisherGeschafft = 0
+	s.Zeigedauer = 500000000 //in ms
+	s.Modus = "Vorspielen"
+	zufallszahlen.Randomisieren()
+	for i:=0; i<len(s.Farbenfolge); i++{
+		s.Farbenfolge[i] = uint8(zufallszahlen.Zufallszahl(0,3))
+	}
+	return s
 }
 
 func (s *Spielfeld)Zeichnen(){  //Üntzelmann, Förster
