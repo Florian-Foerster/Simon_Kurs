@@ -158,7 +158,76 @@ func (s *Spielfeld) Nachspielen () bool {
 	return true
 }
 
-/// Bla
+/*
+func (s*Spielfeld)Nachspielen()bool{
+//Vor.: Ein Grafikfenster ist geöffnet.
+//Eff.: Wenn der Spieler die Lampen in der richtigen Reihenfolge angeklickt hat,
+//      so ist true zurück gegeben. 
+//      Wenn nicht, so ist false zurückgegeben.
+//      Der Modus ist auf "nachspielen" gesetzt.
+
+	var taste uint8
+	var status int8
+	var mx,my uint16
+	(*s).Modus = "nachspielen"
+	s.Zeichnen()
+	for i:=0; i<= int((*s).bisherGeschafft); i++ { ///es wird davon ausgegangen, dass es nicht schaffbar ist auf grund der Länge des Feldes
+		taste,status,mx,my = gfx.MausLesen1 ()
+		if taste == 1 && status == 1 {
+		l:=(*s).Farbenfolge[i]
+			switch l {
+			case 0: 
+				if !s.grüne.IstGeklickt(taste,status,mx,my) {
+					return false
+				}	else {
+					s.grüne.Umschalten()
+					s.Zeichnen()
+					time.Sleep(time.Duration((*s).Zeigedauer))
+					s.grüne.Umschalten()
+					s.Zeichnen()
+				}
+			case 1: 
+				if !s.rote.IstGeklickt(taste,status,mx,my) {
+					return false
+				}else {
+					s.rote.Umschalten()
+					s.Zeichnen()
+					time.Sleep(time.Duration((*s).Zeigedauer))
+					s.rote.Umschalten()
+					s.Zeichnen()
+				}
+			case 2: 
+				if !s.blaue.IstGeklickt(taste,status,mx,my){
+					return false
+				}else {
+					s.blaue.Umschalten()
+					s.Zeichnen()
+					time.Sleep(time.Duration((*s).Zeigedauer))
+					s.blaue.Umschalten()
+					s.Zeichnen()
+				}
+			case 3: 
+				if !s.gelbe.IstGeklickt(taste,status,mx,my){
+					return false
+				}else {
+					s.gelbe.Umschalten()
+					s.Zeichnen()
+					time.Sleep(time.Duration((*s).Zeigedauer))
+					s.gelbe.Umschalten()
+					s.Zeichnen()
+				}
+			default:
+				i--
+			}
+	} else  {
+		i--
+	}
+}
+	
+	(*s).bisherGeschafft++
+
+   return true
+}*/
 func main(){
 	gfx.Fenster(230, 230)
     	var Simon Spielfeld
