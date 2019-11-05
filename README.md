@@ -1,6 +1,7 @@
 # Simon_Kurs
 Gemeinschaftliche Programmierung eines "Simon" Spiels im Kurs Fachdidaktik LeWeIn 2019
 //Hallo Test!!
+//Hallo Ihr da!!
 FRAMEWORK:
 
 type Spielfeld struct {
